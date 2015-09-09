@@ -1,0 +1,447 @@
+-------------------------------------------------------------------------------
+-- Model of the "Laws of Correct Nutrition" using USE-OCL
+-------------------------------------------------------------------------------
+model LawsOfCorrectNutrition  -- lun 23/feb/2015
+
+
+-------------------------------------------------------------------------------
+-- ENUMERATIONS
+-------------------------------------------------------------------------------
+enum Gender {
+  FEMALE,
+  MALE
+}
+
+enum PhysicalActivity {
+  REPOSE,
+  LIGHT,
+  MODERATE,
+  INTENSE
+}
+
+enum MealTime {
+  BREAKFAST,
+  MORNING_SNACK,
+  LUNCH,
+  EVENING_SNACK,
+  DINNER,
+  NIGHT_SNACK
+}
+
+enum FoodGroup {
+  CEREALS,
+  LEGUMES,
+  OLEAGINOUS,
+  VEGETABLES,
+  STARCHY_ROOTS,
+  FRUITS,
+  MEAT_AND_VISCERA,
+  MARINE_RESOURCES,
+  NATIVE_FOOD,
+  DAIRY_PRODUCTS,
+  POULTRY_EGG,
+  OILS_AND_FATS,
+  SWEETS_AND_HONEY,
+  PROCESSED_FOODS,
+  BEVERAGES,
+  SPICES
+}
+
+enum HealthyPlateGroup {
+  FRUITS,
+  VEGETABLES,
+  WHOLE_GRAINS,
+  HEALTHY_PROTEIN,
+  HEALTHY_OILS,
+  WATER,
+  OTHERS
+}
+
+enum UnitOfMeasurement {
+  PIECE,
+  SLICE,
+  GR,
+  KG,
+  ML,
+  L,
+  OZ,
+  LB,
+  CUP,
+  TEASPOON,
+  TABLESPOON,
+  CAN,
+  PINCH
+}
+
+
+-------------------------------------------------------------------------------
+-- CLASSES
+-------------------------------------------------------------------------------
+class User
+attributes
+  name       : String
+  gender     : Gender
+  age        : Integer
+  height     : Integer
+  weight     : Real
+  physicalAct: PhysicalActivity
+  isIll      : Boolean
+  budget     : Real
+operations
+  getTIW() : Real = if (self.gender = Gender::FEMALE) then
+                      (self.height - 100) - ((self.height - 150) / 2)
+                    else
+                      (self.height - 100) - ((self.height - 150) / 4)
+                    endif
+  getBMR(): Real = if (self.gender = Gender::FEMALE) then
+                     (10 * self.weight) + (6.25 * self.height) - (5 * self.age) - 161
+                   else
+                     (10 * self.weight) + (6.25 * self.height) - (5 * self.age) + 5
+                   endif
+  getTEE(): Real = (let tef = (self.getBMR() * 0.10) in
+                   if (self.gender = Gender::FEMALE) then 
+                       if (self.physicalAct = PhysicalActivity::REPOSE) then
+                         self.getBMR() + tef
+                       else if (self.physicalAct = PhysicalActivity::LIGHT) then
+                         self.getBMR() + tef + (self.getBMR() * 0.12)
+                       else if (physicalAct = PhysicalActivity::MODERATE) then
+                         self.getBMR() + tef + (self.getBMR() * 0.27)
+                       else
+                         self.getBMR() + tef + (self.getBMR() * 0.45)
+                       endif endif endif      
+                   else
+                       if (self.physicalAct = PhysicalActivity::REPOSE) then
+                         self.getBMR() + tef
+                       else if (self.physicalAct = PhysicalActivity::LIGHT) then
+                         self.getBMR() + tef + (self.getBMR() * 0.14)
+                       else if (physicalAct = PhysicalActivity::MODERATE) then
+                         self.getBMR() + tef + (self.getBMR() * 0.27)
+                       else
+                         self.getBMR() + tef + (self.getBMR() * 0.54)
+                       endif endif endif
+                   endif
+                   )
+end
+
+class Menu
+operations
+  getEnergy()       : Real = self.meals.getEnergy()->sum()
+  getCarbohydrates(): Real = self.meals.getCarbohydrates()->sum()
+  getProtein()      : Real = self.meals.getProtein()->sum()
+  getFat()          : Real = self.meals.getFat()->sum()
+  getSat()          : Real = self.meals.getSat()->sum()
+  getMonounsaturated(): Real = self.meals.getMonounsaturated()->sum()
+  getPolyunsaturated(): Real = self.meals.getPolyunsaturated()->sum()
+  getCholesterol()    : Real = self.meals.getCholesterol()->sum()
+  getCalcium()      : Real = self.meals.getCalcium()->sum()
+  getPhosphorus()   : Real = self.meals.getPhosphorus()->sum()
+  getIron()         : Real = self.meals.getIron()->sum()
+  getMagnesium()    : Real = self.meals.getMagnesium()->sum()
+  getSodium()       : Real = self.meals.getSodium()->sum()
+  getPotassium()    : Real = self.meals.getPotassium()->sum()
+  getZinc()         : Real = self.meals.getZinc()->sum()
+  getVitA()         : Real = self.meals.getVitA()->sum()
+  getVitB1()        : Real = self.meals.getVitB1()->sum()
+  getVitB2()        : Real = self.meals.getVitB2()->sum()
+  getVitB3()        : Real = self.meals.getVitB3()->sum()
+  getVitB6()        : Real = self.meals.getVitB6()->sum()
+  getVitB9()        : Real = self.meals.getVitB9()->sum()
+  getVitB12()       : Real = self.meals.getVitB12()->sum()
+  getVitC()         : Real = self.meals.getVitC()->sum()
+  getWater()        : Real = self.meals.getWater()->sum()
+  getFiber()        : Real = self.meals.getFiber()->sum()
+  getPrice()        : Real = self.meals.getPrice()->sum()
+end
+
+class Meal
+attributes
+  mealTime: MealTime
+operations
+  getEnergy()       : Real = self.foods.getEnergy()->sum() + self.mealIngredient.getEnergy()->sum()
+  getCarbohydrates(): Real = self.foods.getCarbohydrates()->sum() + self.mealIngredient.getCarbohydrates()->sum()
+  getProtein()      : Real = self.foods.getProtein()->sum() + self.mealIngredient.getProtein()->sum()
+  getFat()          : Real = self.foods.getFat()->sum() + self.mealIngredient.getFat()->sum()
+  getSat()          : Real = self.foods.getSat()->sum() + self.mealIngredient.getSat()->sum()
+  getMonounsaturated(): Real = self.foods.getMonounsaturated()->sum() + self.mealIngredient.getMonounsaturated()->sum()
+  getPolyunsaturated(): Real = self.foods.getPolyunsaturated()->sum() + self.mealIngredient.getPolyunsaturated()->sum()
+  getCholesterol()    : Real = self.foods.getCholesterol()->sum() + self.mealIngredient.getCholesterol()->sum()
+  getCalcium()      : Real = self.foods.getCalcium()->sum() + self.mealIngredient.getCalcium()->sum()
+  getPhosphorus()   : Real = self.foods.getPhosphorus()->sum() + self.mealIngredient.getPhosphorus()->sum()
+  getIron()         : Real = self.foods.getIron()->sum() + self.mealIngredient.getIron()->sum()
+  getMagnesium()    : Real = self.foods.getMagnesium()->sum() + self.mealIngredient.getMagnesium()->sum()
+  getSodium()       : Real = self.foods.getSodium()->sum() + self.mealIngredient.getSodium()->sum()
+  getPotassium()    : Real = self.foods.getPotassium()->sum() + self.mealIngredient.getPotassium()->sum()
+  getZinc()         : Real = self.foods.getZinc()->sum() + self.mealIngredient.getZinc()->sum()
+  getVitA()         : Real = self.foods.getVitA()->sum() + self.mealIngredient.getVitA()->sum()
+  getVitB1()        : Real = self.foods.getVitB1()->sum() + self.mealIngredient.getVitB1()->sum()
+  getVitB2()        : Real = self.foods.getVitB2()->sum() + self.mealIngredient.getVitB2()->sum()
+  getVitB3()        : Real = self.foods.getVitB3()->sum() + self.mealIngredient.getVitB3()->sum()
+  getVitB6()        : Real = self.foods.getVitB6()->sum() + self.mealIngredient.getVitB6()->sum()
+  getVitB9()        : Real = self.foods.getVitB9()->sum() + self.mealIngredient.getVitB9()->sum()
+  getVitB12()       : Real = self.foods.getVitB12()->sum() + self.mealIngredient.getVitB12()->sum()
+  getVitC()         : Real = self.foods.getVitC()->sum() + self.mealIngredient.getVitC()->sum()
+  getWater()        : Real = self.foods.getWater()->sum() + self.mealIngredient.getWater()->sum()
+  getFiber()        : Real = self.foods.getFiber()->sum() + self.mealIngredient.getFiber()->sum()
+  getPrice()        : Real = self.foods.getPrice()->sum() + self.mealIngredient.getPrice()->sum()
+end
+
+abstract class Recipe
+attributes
+  name       : String
+  preparation: String
+operations
+  getEnergy()       : Real = self.recipeIngredient.getEnergy()->sum()
+  getCarbohydrates(): Real = self.recipeIngredient.getCarbohydrates()->sum()
+  getProtein()      : Real = self.recipeIngredient.getProtein()->sum()
+  getFat()          : Real = self.recipeIngredient.getFat()->sum()
+  getSat()          : Real = self.recipeIngredient.getSat()->sum()
+  getMonounsaturated(): Real = self.recipeIngredient.getMonounsaturated()->sum()
+  getPolyunsaturated(): Real = self.recipeIngredient.getPolyunsaturated()->sum()
+  getCholesterol()    : Real = self.recipeIngredient.getCholesterol()->sum()
+  getCalcium()      : Real = self.recipeIngredient.getCalcium()->sum()
+  getPhosphorus()   : Real = self.recipeIngredient.getPhosphorus()->sum()
+  getIron()         : Real = self.recipeIngredient.getIron()->sum()
+  getMagnesium()    : Real = self.recipeIngredient.getMagnesium()->sum()
+  getSodium()       : Real = self.recipeIngredient.getSodium()->sum()
+  getPotassium()    : Real = self.recipeIngredient.getPotassium()->sum()
+  getZinc()         : Real = self.recipeIngredient.getZinc()->sum()
+  getVitA()         : Real = self.recipeIngredient.getVitA()->sum()
+  getVitB1()        : Real = self.recipeIngredient.getVitB1()->sum()
+  getVitB2()        : Real = self.recipeIngredient.getVitB2()->sum()
+  getVitB3()        : Real = self.recipeIngredient.getVitB3()->sum()
+  getVitB6()        : Real = self.recipeIngredient.getVitB6()->sum()
+  getVitB9()        : Real = self.recipeIngredient.getVitB9()->sum()
+  getVitB12()       : Real = self.recipeIngredient.getVitB12()->sum()
+  getVitC()         : Real = self.recipeIngredient.getVitC()->sum()
+  getWater()        : Real = self.recipeIngredient.getWater()->sum()
+  getFiber()        : Real = self.recipeIngredient.getFiber()->sum()
+  getPrice()        : Real = self.recipeIngredient.getPrice()->sum()
+end
+
+class Dish < Recipe
+end
+
+class Drink < Recipe
+end
+
+class BasicFoodstuff100gr
+attributes
+  key          : String
+  name         : String
+  energy       : Real
+  carbohydrates: Real
+  protein      : Real
+  fat          : Real
+  sat          : Real
+  monounsaturated:Real
+  polyunsaturated:Real
+  cholesterol  : Real
+  calcium      : Real
+  phosphorus   : Real
+  iron         : Real
+  magnesium    : Real
+  sodium       : Real
+  potassium    : Real
+  zinc         : Real
+  vitA         : Real  -- Retinoids
+  vitB1        : Real  -- Thiamin
+  vitB2        : Real  -- Riboflavin
+  vitB3        : Real  -- Niacin
+  vitB6        : Real  -- Pyridoxine
+  vitB9        : Real  -- Folic acid
+  vitB12       : Real  -- Cobalamin
+  vitC         : Real  -- Ascorbic acid
+  water        : Real
+  fiber        : Real
+  foodGroup    : FoodGroup
+  plateGroup   : HealthyPlateGroup
+  price        : Real
+end
+
+associationclass RecipeIngredient
+between
+  Recipe[*]
+  BasicFoodstuff100gr[1..*] role basicFoodstuff
+attributes
+  name   : String
+  amount : Real
+  unit   : UnitOfMeasurement
+  inGrams: Real
+operations
+  getEnergy()       : Real = self.basicFoodstuff.energy  * self.inGrams / 100
+  getCarbohydrates(): Real = self.basicFoodstuff.carbohydrates * self.inGrams / 100
+  getProtein()      : Real = self.basicFoodstuff.protein * self.inGrams / 100
+  getFat()          : Real = self.basicFoodstuff.fat  * self.inGrams / 100
+  getSat()          : Real = self.basicFoodstuff.sat  * self.inGrams / 100
+  getMonounsaturated(): Real = self.basicFoodstuff.monounsaturated  * self.inGrams / 100
+  getPolyunsaturated(): Real = self.basicFoodstuff.polyunsaturated  * self.inGrams / 100
+  getCholesterol()    : Real = self.basicFoodstuff.cholesterol  * self.inGrams / 100
+  getCalcium()      : Real = self.basicFoodstuff.calcium * self.inGrams / 100
+  getPhosphorus()   : Real = self.basicFoodstuff.phosphorus * self.inGrams / 100
+  getIron()         : Real = self.basicFoodstuff.iron   * self.inGrams / 100
+  getMagnesium()    : Real = self.basicFoodstuff.magnesium  * self.inGrams / 100
+  getSodium()    : Real = self.basicFoodstuff.sodium  * self.inGrams / 100
+  getPotassium()    : Real = self.basicFoodstuff.potassium  * self.inGrams / 100
+  getZinc()         : Real = self.basicFoodstuff.zinc   * self.inGrams / 100
+  getVitA()         : Real = self.basicFoodstuff.vitA   * self.inGrams / 100
+  getVitB1()        : Real = self.basicFoodstuff.vitB1  * self.inGrams / 100
+  getVitB2()        : Real = self.basicFoodstuff.vitB2  * self.inGrams / 100
+  getVitB3()        : Real = self.basicFoodstuff.vitB3  * self.inGrams / 100
+  getVitB6()        : Real = self.basicFoodstuff.vitB6  * self.inGrams / 100
+  getVitB9()        : Real = self.basicFoodstuff.vitB9  * self.inGrams / 100
+  getVitB12()       : Real = self.basicFoodstuff.vitB12 * self.inGrams / 100
+  getVitC()         : Real = self.basicFoodstuff.vitC * self.inGrams / 100
+  getWater()        : Real = self.basicFoodstuff.water  * self.inGrams / 100
+  getFiber()        : Real = self.basicFoodstuff.fiber  * self.inGrams / 100
+  getPrice()        : Real = self.basicFoodstuff.price  * self.inGrams / 100
+end
+
+associationclass MealIngredient < RecipeIngredient
+between
+  Meal[*]
+  BasicFoodstuff100gr[*] role basicFoodstuff
+--
+operations
+  getEnergy()       : Real = self.basicFoodstuff.energy  * self.inGrams / 100
+  getCarbohydrates(): Real = self.basicFoodstuff.carbohydrates * self.inGrams / 100
+  getProtein()      : Real = self.basicFoodstuff.protein * self.inGrams / 100
+  getFat()          : Real = self.basicFoodstuff.fat  * self.inGrams / 100
+  getSat()          : Real = self.basicFoodstuff.sat  * self.inGrams / 100
+  getMonounsaturated(): Real = self.basicFoodstuff.monounsaturated  * self.inGrams / 100
+  getPolyunsaturated(): Real = self.basicFoodstuff.polyunsaturated  * self.inGrams / 100
+  getCholesterol()    : Real = self.basicFoodstuff.cholesterol  * self.inGrams / 100
+  getCalcium()      : Real = self.basicFoodstuff.calcium * self.inGrams / 100
+  getPhosphorus()   : Real = self.basicFoodstuff.phosphorus * self.inGrams / 100
+  getIron()         : Real = self.basicFoodstuff.iron   * self.inGrams / 100
+  getMagnesium()    : Real = self.basicFoodstuff.magnesium  * self.inGrams / 100
+  getSodium()    : Real = self.basicFoodstuff.sodium  * self.inGrams / 100
+  getPotassium()    : Real = self.basicFoodstuff.potassium  * self.inGrams / 100
+  getZinc()         : Real = self.basicFoodstuff.zinc   * self.inGrams / 100
+  getVitA()         : Real = self.basicFoodstuff.vitA   * self.inGrams / 100
+  getVitB1()        : Real = self.basicFoodstuff.vitB1  * self.inGrams / 100
+  getVitB2()        : Real = self.basicFoodstuff.vitB2  * self.inGrams / 100
+  getVitB3()        : Real = self.basicFoodstuff.vitB3  * self.inGrams / 100
+  getVitB6()        : Real = self.basicFoodstuff.vitB6  * self.inGrams / 100
+  getVitB9()        : Real = self.basicFoodstuff.vitB9  * self.inGrams / 100
+  getVitB12()       : Real = self.basicFoodstuff.vitB12 * self.inGrams / 100
+  getVitC()         : Real = self.basicFoodstuff.vitC * self.inGrams / 100
+  getWater()        : Real = self.basicFoodstuff.water  * self.inGrams / 100
+  getFiber()        : Real = self.basicFoodstuff.fiber  * self.inGrams / 100
+  getPrice()        : Real = self.basicFoodstuff.price  * self.inGrams / 100
+--
+end
+
+
+-------------------------------------------------------------------------------
+-- ASSOCIATIONS
+-------------------------------------------------------------------------------
+aggregation UserFavorites between
+  User[*] role user
+  BasicFoodstuff100gr[*] role favorites
+end
+
+aggregation UserIntolerance between
+  User[*] role user_
+  BasicFoodstuff100gr[*] role intolerants
+end
+
+composition MealFoods between
+  Meal[*]
+  Recipe[1..*] role foods
+end
+
+composition MenuMeals between
+  Menu[*]
+  Meal[1..*] role meals
+end
+
+composition MenuUser between
+  Menu[*]
+  User[1]
+end
+
+
+-------------------------------------------------------------------------------
+-- CONSTRAINTS
+-------------------------------------------------------------------------------
+constraints
+
+context User
+  inv StandardAdult: (self.age >= 18) and (self.age <= 60) and
+                    (self.weight >= self.getTIW() * 0.90) and (self.weight <= self.getTIW() * 1.19) and
+                    (self.isIll = false)
+
+context Menu
+  inv LawOfQuantity: self.getEnergy() >= (self.user.getTEE() * 0.90) and
+                     self.getEnergy() <= (self.user.getTEE() * 1.10)
+
+context Menu
+  inv LawOfQuality_HealthyPlate: (self.meals.foods.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::FRUITS) or
+                   self.meals.mealIngredient.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::FRUITS))
+                   and
+                   (self.meals.foods.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::VEGETABLES) or
+                   self.meals.mealIngredient.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::VEGETABLES))
+                   and
+                   (self.meals.foods.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::WHOLE_GRAINS) or
+                   self.meals.mealIngredient.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::WHOLE_GRAINS))
+                   and
+                   (self.meals.foods.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::HEALTHY_PROTEIN) or
+                   self.meals.mealIngredient.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::HEALTHY_PROTEIN))
+                   and
+                   (self.meals.foods.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::HEALTHY_OILS) or
+                   self.meals.mealIngredient.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::HEALTHY_OILS))
+                   and
+                   (self.meals.foods.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::WATER) or
+                   self.meals.mealIngredient.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::WATER))
+
+  inv LawOfQuality_Vitamins: if (self.user.gender = Gender::FEMALE) then
+                     self.getVitA() >= 700 and self.getVitB1() >= 1.1 and
+                     self.getVitB2() >= 1.1 and self.getVitB3() >= 14 and
+                     self.getVitB6() >= 1.3 and self.getVitB9() >= 400 and
+                     self.getVitB12() >= 2.4 and self.getVitC() >= 75
+                   else
+                     self.getVitA() >= 900 and self.getVitB1() >= 1.2 and
+                     self.getVitB2() >= 1.3 and self.getVitB3() >= 16 and
+                     self.getVitB6() >= 1.3 and self.getVitB9() >= 400 and
+                     self.getVitB12() >= 2.4 and self.getVitC() >= 90
+                   endif
+  
+  inv LawOfQuality_Minerals: if (self.user.gender = Gender::FEMALE) then
+                     self.getCalcium() >= 1000 and self.getPhosphorus() >= 700 and 
+                     self.getSodium() >= 2400 and self.getPotassium() >= 4700 and
+                     self.getIron() >= 18 and self.getMagnesium() >= 315 and 
+                     self.getZinc() >= 8
+                   else
+                     self.getCalcium() >= 1000 and self.getPhosphorus() >= 700 and 
+                     self.getSodium() >= 2400 and self.getPotassium() >= 4700 and
+                     self.getIron() >= 8  and self.getMagnesium() >= 410 and 
+                     self.getZinc() >= 11
+                   endif
+
+  inv LawOfQuality_Sat: self.getSat() <=  self.getEnergy() * 0.07
+
+  inv LawOfQuality_Fiber: getFiber() >=  20
+
+  inv LawOfQuality_Water: if (self.user.gender = Gender::FEMALE) then
+                     self.getWater() >= 2700
+                   else
+                     self.getWater() >= 3700
+                   endif
+
+context Menu
+  inv LawOfHarmony: (let carb = self.getCarbohydrates()*4 in
+                              (carb >= self.getEnergy()*0.50) and (carb <= self.getEnergy()*0.70)) and
+                    (let prot = getProtein()*4 in
+                              (prot >= self.getEnergy()*0.10) and (prot <= self.getEnergy()*0.20)) and
+                    (let fat = self.getFat()*9 in
+                              (fat >= self.getEnergy()*0.25) and (fat <= self.getEnergy()*0.35))
+
+context Menu
+  inv LawOfAdecuacy: (self.meals.foods.basicFoodstuff->intersection(self.user.intolerants)->isEmpty() or
+                      self.meals.mealIngredient.basicFoodstuff->intersection(self.user.intolerants)->isEmpty())
+                     and
+                     (self.meals.foods.basicFoodstuff->intersection(self.user.favorites)->notEmpty() or
+                     self.meals.mealIngredient.basicFoodstuff->intersection(self.user.favorites)->notEmpty())
+                     and
+                     self.getPrice() <= self.user.budget
+
