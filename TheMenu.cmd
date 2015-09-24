@@ -1400,7 +1400,7 @@
 
 !create salt1 : RecipeIngredient between (eggsAlaMexican, salt)
 !set salt1.name := 'Pinch of salt'
-!set salt1.amount := 2
+!set salt1.amount := 4
 !set salt1.unit := UnitOfMeasurement::PINCH
 !set salt1.inGrams := 8
 
@@ -1435,7 +1435,7 @@
 
 !create almonds1 : RecipeIngredient between (yoghurtMix, almonds)
 !set almonds1.name := '10 almonds'
-!set almonds1.amount := 12
+!set almonds1.amount := 10
 !set almonds1.unit := UnitOfMeasurement::PIECE
 !set almonds1.inGrams := 12
 
@@ -1500,19 +1500,19 @@
 
 !create salt2 : RecipeIngredient between (tunaSalmagundi, salt)
 !set salt2.name := 'Pinch of salt'
-!set salt2.amount := 2
+!set salt2.amount := 4
 !set salt2.unit := UnitOfMeasurement::PINCH
 !set salt2.inGrams := 8
 
 !create pepper1 : RecipeIngredient between (tunaSalmagundi, blackPepper)
 !set pepper1.name := 'Pinch of pepper'
-!set pepper1.amount := 1
+!set pepper1.amount := 2
 !set pepper1.unit := UnitOfMeasurement::PINCH
 !set pepper1.inGrams := 4
 
 !create laurel1 : RecipeIngredient between (tunaSalmagundi, laurel)
 !set laurel1.name := 'Pinch of laurel'
-!set laurel1.amount := 1
+!set laurel1.amount := 2
 !set laurel1.unit := UnitOfMeasurement::PINCH
 !set laurel1.inGrams := 4
 
@@ -1569,15 +1569,9 @@
 !set vinegar3.unit := UnitOfMeasurement::TEASPOON
 !set vinegar3.inGrams := 5
 
-!create oregano1 : RecipeIngredient between (saladLimaBeans, oregano)
-!set oregano1.name := 'Pinch of oregano'
-!set oregano1.amount := 1
-!set oregano1.unit := UnitOfMeasurement::PINCH
-!set oregano1.inGrams := 4
-
 !create salt3 : RecipeIngredient between (saladLimaBeans, salt)
 !set salt3.name := 'Pinch of salt'
-!set salt3.amount := 2
+!set salt3.amount := 4
 !set salt3.unit := UnitOfMeasurement::PINCH
 !set salt3.inGrams := 8
 
@@ -1606,37 +1600,43 @@
 
 !create salt4 : RecipeIngredient between (jicamaSnack, salt)
 !set salt4.name := 'Pinch of salt'
-!set salt4.amount := 1
+!set salt4.amount := 2
 !set salt4.unit := UnitOfMeasurement::PINCH
 !set salt4.inGrams := 4
 
-!create simpleSalad : Dish
-!set simpleSalad.name := 'Simple salad'
-!set simpleSalad.preparation := ''
+!create broccoliSalad : Dish
+!set broccoliSalad.name := 'Simple salad'
+!set broccoliSalad.preparation := ''
 
-!create broccoli1 : RecipeIngredient between (simpleSalad, broccoli)
+!create broccoli1 : RecipeIngredient between (broccoliSalad, broccoli)
 !set broccoli1.name := 'Broccoli'
 !set broccoli1.amount := 0.5
 !set broccoli1.unit := UnitOfMeasurement::CUP
 !set broccoli1.inGrams := 92
 
-!create leek1 : RecipeIngredient between (simpleSalad, leek)
+!create leek1 : RecipeIngredient between (broccoliSalad, leek)
 !set leek1.name := 'Leek'
 !set leek1.amount := 0.25
 !set leek1.unit := UnitOfMeasurement::CUP
 !set leek1.inGrams := 32
 
-!create cauliflower1 : RecipeIngredient between (simpleSalad, cauliflower)
+!create cauliflower1 : RecipeIngredient between (broccoliSalad, cauliflower)
 !set cauliflower1.name := 'Cauliflower'
 !set cauliflower1.amount := 0.5
 !set cauliflower1.unit := UnitOfMeasurement::CUP
 !set cauliflower1.inGrams := 60
 
-!create salt5 : RecipeIngredient between (simpleSalad, salt)
+!create oregano1 : RecipeIngredient between (broccoliSalad, oregano)
+!set oregano1.name := 'Pinch of oregano'
+!set oregano1.amount := 2
+!set oregano1.unit := UnitOfMeasurement::PINCH
+!set oregano1.inGrams := 4
+
+!create salt5 : RecipeIngredient between (broccoliSalad, salt)
 !set salt5.name := 'Pinch of salt'
-!set salt5.amount := 2
+!set salt5.amount := 3
 !set salt5.unit := UnitOfMeasurement::PINCH
-!set salt5.inGrams := 8
+!set salt5.inGrams := 6
 
 
 !create lentilSoup : Dish
@@ -1675,7 +1675,7 @@
 
 !create salt6 : RecipeIngredient between (lentilSoup, salt)
 !set salt6.name := 'Pinch of salt'
-!set salt6.amount := 2
+!set salt6.amount := 4
 !set salt6.unit := UnitOfMeasurement::PINCH
 !set salt6.inGrams := 8
 
@@ -1789,7 +1789,7 @@
 !create eveningSnack : Meal
 !set eveningSnack.mealTime := MealTime::EVENING_SNACK
 !insert (eveningSnack, jicamaSnack) into MealFoods
-!insert (eveningSnack, simpleSalad) into MealFoods
+!insert (eveningSnack, broccoliSalad) into MealFoods
 
 !create water5 : MealIngredient between (eveningSnack, water)
 !set water5.name := '2 cups of water'
