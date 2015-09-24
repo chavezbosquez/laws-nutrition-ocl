@@ -434,7 +434,7 @@ context Menu
                     (let prot = getProtein()*4 in
                               (prot >= self.getEnergy()*0.10) and (prot <= self.getEnergy()*0.20)) and
                     (let fat = self.getFat()*9 in
-                              (fat >= self.getEnergy()*0.25) and (fat <= self.getEnergy()*0.35))
+                              (fat >= self.getEnergy()*0.20) and (fat <= self.getEnergy()*0.35))
 
 context Menu
   inv LawOfAdecuacy: (self.meals.foods.basicFoodstuff->intersection(self.user.intolerants)->isEmpty() or
