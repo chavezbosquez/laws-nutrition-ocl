@@ -152,21 +152,6 @@
     <target>Recipe</target>
     <name>MealFoods</name>
     <properties>
-      <edgeproperty id="MealFoods::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>MealFoods</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>MealFoods::WayPoint::0</related0>
-            <related1>MealFoods::WayPoint::1</related1>
-          </related>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
       <edgeproperty id="MealFoods::source::rolename"
         sizeCalculated="true" type="rolename" userDefined="true" visible="true">
         <name>meal</name>
@@ -190,6 +175,21 @@
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty id="MealFoods::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>MealFoods</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>MealFoods::WayPoint::0</related0>
+            <related1>MealFoods::WayPoint::1</related1>
+          </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -247,137 +247,20 @@
     <hidden>false</hidden>
   </edge>
   <edge type="BinaryEdge">
-    <source>User</source>
-    <target>BasicFoodstuff100gr</target>
-    <name>UserFavourites</name>
-    <properties>
-      <edgeproperty id="UserFavourites::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>UserFavourites</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>UserFavourites::WayPoint::0</related0>
-            <related1>UserFavourites::WayPoint::1</related1>
-          </related>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty id="UserFavourites::source::rolename"
-        sizeCalculated="true" type="rolename" userDefined="true" visible="true">
-        <name>user</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>-5.0</userOffsetX>
-          <userOffsetY>4.0</userOffsetY>
-          <attached>UserFavourites::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>TOP</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty id="UserFavourites::source::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="true" visible="true">
-        <name>*</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>27.0</userOffsetX>
-          <userOffsetY>8.0</userOffsetY>
-          <attached>UserFavourites::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty id="UserFavourites::target::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="true" visible="true">
-        <name>*</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>22.0</userOffsetX>
-          <userOffsetY>7.0</userOffsetY>
-          <attached>UserFavourites::WayPoint::1</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty id="UserFavourites::target::rolename"
-        sizeCalculated="true" type="rolename" userDefined="true" visible="true">
-        <name>favourites</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>2.0</userOffsetX>
-          <userOffsetY>9.0</userOffsetY>
-          <attached>UserFavourites::WayPoint::1</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>TOP</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-    </properties>
-    <waypoints>
-      <edgeproperty id="UserFavourites::WayPoint::0"
-        sizeCalculated="true" type="WayPoint" userDefined="true" visible="true">
-        <name>0</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToCorner">
-          <userOffsetX>64.91460042085328</userOffsetX>
-          <userOffsetY>198.0</userOffsetY>
-          <basisDeltaX>ABSOLUTE</basisDeltaX>
-          <deltaX>0.0</deltaX>
-          <maxDeltaX>1.7976931348623157E308</maxDeltaX>
-          <basisDeltaY>ABSOLUTE</basisDeltaY>
-          <deltaY>0.0</deltaY>
-          <maxDeltaY>1.7976931348623157E308</maxDeltaY>
-          <corner>NORTH_WEST</corner>
-          <relativeNodeId>User</relativeNodeId>
-        </strategy>
-        <id>0</id>
-        <specialid>1</specialid>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty id="UserFavourites::WayPoint::1"
-        sizeCalculated="true" type="WayPoint" userDefined="true" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToCorner">
-          <userOffsetX>69.39036685179337</userOffsetX>
-          <userOffsetY>-2.0</userOffsetY>
-          <basisDeltaX>ABSOLUTE</basisDeltaX>
-          <deltaX>0.0</deltaX>
-          <maxDeltaX>1.7976931348623157E308</maxDeltaX>
-          <basisDeltaY>ABSOLUTE</basisDeltaY>
-          <deltaY>0.0</deltaY>
-          <maxDeltaY>1.7976931348623157E308</maxDeltaY>
-          <corner>NORTH_WEST</corner>
-          <relativeNodeId>BasicFoodstuff100gr</relativeNodeId>
-        </strategy>
-        <id>1</id>
-        <specialid>2</specialid>
-        <hidden>false</hidden>
-      </edgeproperty>
-    </waypoints>
-    <hidden>false</hidden>
-  </edge>
-  <edge type="BinaryEdge">
     <source>Menu</source>
     <target>Meal</target>
     <name>MenuMeals</name>
     <properties>
-      <edgeproperty id="MenuMeals::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>MenuMeals</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>MenuMeals::WayPoint::0</related0>
-            <related1>MenuMeals::WayPoint::1</related1>
-          </related>
+      <edgeproperty id="MenuMeals::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="true" visible="true">
+        <name>menu</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>7.0</userOffsetX>
+          <userOffsetY>16.0</userOffsetY>
+          <attached>MenuMeals::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -394,16 +277,18 @@
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
-      <edgeproperty id="MenuMeals::source::rolename"
-        sizeCalculated="true" type="rolename" userDefined="true" visible="true">
-        <name>menu</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>7.0</userOffsetX>
-          <userOffsetY>16.0</userOffsetY>
-          <attached>MenuMeals::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>TOP</placement>
+      <edgeproperty id="MenuMeals::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>MenuMeals</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>MenuMeals::WayPoint::0</related0>
+            <related1>MenuMeals::WayPoint::1</related1>
+          </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -477,22 +362,119 @@
     <hidden>false</hidden>
   </edge>
   <edge type="BinaryEdge">
-    <source>Menu</source>
-    <target>User</target>
-    <name>MenuUser</name>
+    <source>User</source>
+    <target>BasicFoodstuff100gr</target>
+    <name>UserFavorites</name>
     <properties>
-      <edgeproperty id="MenuUser::AssociationName" sizeCalculated="true"
-        type="associationName" userDefined="false" visible="true">
-        <name>MenuUser</name>
+      <edgeproperty id="UserFavorites::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>*</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>UserFavorites::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty id="UserFavorites::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>user</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>UserFavorites::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty id="UserFavorites::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>UserFavorites</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
           <offsetX>0.0</offsetX>
           <offsetY>-10.0</offsetY>
           <related length="2">
-            <related0>MenuUser::WayPoint::0</related0>
-            <related1>MenuUser::WayPoint::1</related1>
+            <related0>UserFavorites::WayPoint::0</related0>
+            <related1>UserFavorites::WayPoint::1</related1>
           </related>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty id="UserFavorites::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>*</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>UserFavorites::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty id="UserFavorites::target::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>favorites</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>UserFavorites::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </properties>
+    <waypoints>
+      <edgeproperty id="UserFavorites::WayPoint::0"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>0</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>0</id>
+        <specialid>1</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty id="UserFavorites::WayPoint::1"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>1</id>
+        <specialid>2</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </waypoints>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>Menu</source>
+    <target>User</target>
+    <name>MenuUser</name>
+    <properties>
+      <edgeproperty id="MenuUser::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="true" visible="true">
+        <name>*</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>13.0</userOffsetX>
+          <userOffsetY>-12.0</userOffsetY>
+          <attached>MenuUser::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -509,29 +491,18 @@
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
-      <edgeproperty id="MenuUser::source::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="true" visible="true">
-        <name>*</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>13.0</userOffsetX>
-          <userOffsetY>-12.0</userOffsetY>
-          <attached>MenuUser::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty id="MenuUser::target::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="true" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>5.0</userOffsetX>
-          <userOffsetY>-10.0</userOffsetY>
-          <attached>MenuUser::WayPoint::1</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
+      <edgeproperty id="MenuUser::AssociationName" sizeCalculated="true"
+        type="associationName" userDefined="false" visible="true">
+        <name>MenuUser</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>MenuUser::WayPoint::0</related0>
+            <related1>MenuUser::WayPoint::1</related1>
+          </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -545,6 +516,19 @@
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty id="MenuUser::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="true" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>5.0</userOffsetX>
+          <userOffsetY>-10.0</userOffsetY>
+          <attached>MenuUser::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -596,18 +580,16 @@
     <target>BasicFoodstuff100gr</target>
     <name>UserIntolerance</name>
     <properties>
-      <edgeproperty id="UserIntolerance::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>UserIntolerance</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>UserIntolerance::WayPoint::0</related0>
-            <related1>UserIntolerance::WayPoint::1</related1>
-          </related>
+      <edgeproperty id="UserIntolerance::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="true" visible="true">
+        <name>*</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>-3.0</userOffsetX>
+          <userOffsetY>8.0</userOffsetY>
+          <attached>UserIntolerance::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -624,16 +606,18 @@
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
-      <edgeproperty id="UserIntolerance::source::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="true" visible="true">
-        <name>*</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>-3.0</userOffsetX>
-          <userOffsetY>8.0</userOffsetY>
-          <attached>UserIntolerance::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
+      <edgeproperty id="UserIntolerance::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>UserIntolerance</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>UserIntolerance::WayPoint::0</related0>
+            <related1>UserIntolerance::WayPoint::1</related1>
+          </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -711,18 +695,16 @@
     <target>BasicFoodstuff100gr</target>
     <name>MealIngredient</name>
     <properties>
-      <edgeproperty id="MealIngredient::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>MealIngredient</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>MealIngredient::WayPoint::0</related0>
-            <related1>MealIngredient::WayPoint::2</related1>
-          </related>
+      <edgeproperty id="MealIngredient::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="true" visible="true">
+        <name>meal</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>4.0</userOffsetX>
+          <userOffsetY>10.0</userOffsetY>
+          <attached>MealIngredient::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -739,29 +721,18 @@
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
-      <edgeproperty id="MealIngredient::source::rolename"
-        sizeCalculated="true" type="rolename" userDefined="true" visible="true">
-        <name>meal</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>4.0</userOffsetX>
-          <userOffsetY>10.0</userOffsetY>
-          <attached>MealIngredient::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>TOP</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty id="MealIngredient::target::rolename"
-        sizeCalculated="true" type="rolename" userDefined="true" visible="true">
-        <name>basicFoodstuff</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>2.0</userOffsetX>
-          <userOffsetY>18.0</userOffsetY>
-          <attached>MealIngredient::WayPoint::2</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>TOP</placement>
+      <edgeproperty id="MealIngredient::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>MealIngredient</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>MealIngredient::WayPoint::0</related0>
+            <related1>MealIngredient::WayPoint::2</related1>
+          </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -775,6 +746,19 @@
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty id="MealIngredient::target::rolename"
+        sizeCalculated="true" type="rolename" userDefined="true" visible="true">
+        <name>basicFoodstuff</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>2.0</userOffsetX>
+          <userOffsetY>18.0</userOffsetY>
+          <attached>MealIngredient::WayPoint::2</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -869,21 +853,6 @@
     <target>BasicFoodstuff100gr</target>
     <name>RecipeIngredient</name>
     <properties>
-      <edgeproperty id="RecipeIngredient::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>RecipeIngredient</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>RecipeIngredient::WayPoint::0</related0>
-            <related1>RecipeIngredient::WayPoint::2</related1>
-          </related>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
       <edgeproperty id="RecipeIngredient::source::multiplicity"
         sizeCalculated="true" type="multiplicity" userDefined="true" visible="true">
         <name>*</name>
@@ -907,6 +876,21 @@
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty id="RecipeIngredient::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>RecipeIngredient</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>RecipeIngredient::WayPoint::0</related0>
+            <related1>RecipeIngredient::WayPoint::2</related1>
+          </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
