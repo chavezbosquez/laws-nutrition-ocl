@@ -9,7 +9,7 @@ Relevant files:
 
 * [Model.use](https://github.com/chavezbosquez/laws-nutrition-ocl/blob/master/Model.use): The model specification. Load the model using USE GUI or via command line: `use Model.use`
 * [TheMenu.cmd](https://github.com/chavezbosquez/laws-nutrition-ocl/blob/master/TheMenu.cmd): A complete menu enforcing the Laws of Nutrition. After loading the model, load the menu via command line: `open TheMenu.cmd`
-* [Model_default.clt](https://github.com/chavezbosquez/laws-nutrition-ocl/blob/master/Model_default.clt), [*.olt](https://github.com/chavezbosquez/laws-nutrition-ocl/blob/master/TheMenu.olt): Auxiliary layout files of USE. Load a layout file to visualize specific elements of the menu.
+* [Model_default.clt](https://github.com/chavezbosquez/laws-nutrition-ocl/blob/master/Model_default.clt): Auxiliary layout file for Model visualization
 
 ##The model
 
