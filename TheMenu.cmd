@@ -1,18 +1,17 @@
-------------------------------------------------------------------------------
+----------------------------------------------------------------------------
 -- The full set of foodstuffs
 -- Data values taken from: "Composición de alimentos Miriam Muñoz de Chávez.
--- Valor nutritivo de los alimentos de mayor consumo. 2 Ed.
--- (Most widely used food composition table)" (2009).
--- Prices in mexican pesos
+-- Valor nutritivo de los alimentos de mayor consumo", 2nd ed. (2009).
+-- Prices in mexican pesos (MNX)
 -- Values with '0.00' are unknown
-------------------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 !create egg : BasicFoodstuff100gr
 !set egg.key := 'HDA-1'
 !set egg.name := 'Fresh whole chicken egg'
 !set egg.energy := 154
 !set egg.carbohydrates := 1.11
-!set egg.protein := 12.33
+!set egg.proteins := 12.33
 !set egg.fat := 11.14
 !set egg.sat := 3.21
 !set egg.monounsaturated := 4.39
@@ -45,7 +44,7 @@
 !set tomato.name := 'Tomato'
 !set tomato.energy := 18
 !set tomato.carbohydrates := 3.92
-!set tomato.protein := 0.88
+!set tomato.proteins := 0.88
 !set tomato.fat := 0.2
 !set tomato.sat := 0.03
 !set tomato.monounsaturated := 0.03
@@ -78,7 +77,7 @@
 !set whiteOnion.name := 'White onion'
 !set whiteOnion.energy := 40
 !set whiteOnion.carbohydrates := 8.34
-!set whiteOnion.protein := 1.1
+!set whiteOnion.proteins := 1.1
 !set whiteOnion.fat := 0.1
 !set whiteOnion.sat := 0.04
 !set whiteOnion.monounsaturated := 0.04
@@ -111,7 +110,7 @@
 !set chile.name := ' Jalapeño chile'
 !set chile.energy := 27
 !set chile.carbohydrates := 5.3
-!set chile.protein := 1.2
+!set chile.proteins := 1.2
 !set chile.fat := 0.1
 !set chile.sat := 0.01
 !set chile.monounsaturated := 0
@@ -144,7 +143,7 @@
 !set cornOil.name := 'Corn oil'
 !set cornOil.energy := 900
 !set cornOil.carbohydrates := 0
-!set cornOil.protein := 0
+!set cornOil.proteins := 0
 !set cornOil.fat := 100
 !set cornOil.sat := 12.7
 !set cornOil.monounsaturated := 24.20
@@ -177,7 +176,7 @@
 !set ryeBread.name := 'Wholemeal rye bread'
 !set ryeBread.energy := 250
 !set ryeBread.carbohydrates := 47.5
-!set ryeBread.protein := 8.7
+!set ryeBread.proteins := 8.7
 !set ryeBread.fat := 3.1
 !set ryeBread.sat := 0.00
 !set ryeBread.monounsaturated := 0
@@ -210,7 +209,7 @@
 !set orangeJuice.name := 'Orange juice (average)'
 !set orangeJuice.energy := 46
 !set orangeJuice.carbohydrates := 10.4
-!set orangeJuice.protein := 0.7
+!set orangeJuice.proteins := 0.7
 !set orangeJuice.fat := 0.2
 !set orangeJuice.sat := 0.02
 !set orangeJuice.monounsaturated := 0.01
@@ -243,7 +242,7 @@
 !set mineralWater.name := 'Sparkling mineral water'
 !set mineralWater.energy := 0
 !set mineralWater.carbohydrates := 0
-!set mineralWater.protein := 0
+!set mineralWater.proteins := 0
 !set mineralWater.fat := 0
 !set mineralWater.sat := 0
 !set mineralWater.monounsaturated := 0
@@ -276,7 +275,7 @@
 !set yoghurt.name := 'Yoghurt (semi-skimmed milk)'
 !set yoghurt.energy := 63
 !set yoghurt.carbohydrates := 7
-!set yoghurt.protein := 5.2
+!set yoghurt.proteins := 5.2
 !set yoghurt.fat := 1.6
 !set yoghurt.sat := 1
 !set yoghurt.monounsaturated := 0.35
@@ -304,45 +303,12 @@
 !set yoghurt.price := 2.45
 -- $24.50 kg
 
-!create banana : BasicFoodstuff100gr
-!set banana.key := 'FRU-67'
-!set banana.name := 'Banana (average)'
-!set banana.energy := 89
-!set banana.carbohydrates := 22.84
-!set banana.protein := 1.09
-!set banana.fat := 0.33
-!set banana.sat := 0.11
-!set banana.monounsaturated := 0.02
-!set banana.polyunsaturated := 0.04
-!set banana.cholesterol := 0
-!set banana.calcium := 12
-!set banana.phosphorus := 0.00
-!set banana.iron := 0.26
-!set banana.magnesium := 33
-!set banana.sodium := 1.1
-!set banana.potassium := 370
-!set banana.zinc := 0.15
-!set banana.vitA := 3
-!set banana.vitB1 := 0.09
-!set banana.vitB2 := 0.05
-!set banana.vitB3 := 0.5
-!set banana.vitB6 := 0.58
-!set banana.vitB9 := 19
-!set banana.vitB12 := 0
-!set banana.vitC := 8.7
-!set banana.water := 73.20
-!set banana.fiber := 2.10
-!set banana.foodGroup := FoodGroup::FRUITS
-!set banana.plateGroup := HealthyPlateGroup::FRUITS
-!set banana.price := 1.69
--- $16.90 kg
-
 !create apricot : BasicFoodstuff100gr
 !set apricot.key := 'FRU-8'
 !set apricot.name := 'Apricot'
 !set apricot.energy := 48
 !set apricot.carbohydrates := 11.12
-!set apricot.protein := 1.4
+!set apricot.proteins := 1.4
 !set apricot.fat := 0.39
 !set apricot.sat := 0.03
 !set apricot.monounsaturated := 0.17
@@ -375,7 +341,7 @@
 !set almonds.name := 'Almonds'
 !set almonds.energy := 575
 !set almonds.carbohydrates := 21.67
-!set almonds.protein := 21.22
+!set almonds.proteins := 21.22
 !set almonds.fat := 49.42
 !set almonds.sat := 4.1
 !set almonds.monounsaturated := 36
@@ -408,7 +374,7 @@
 !set tunaFish.name := 'Canned tuna fish in oil'
 !set tunaFish.energy := 281
 !set tunaFish.carbohydrates := 0
-!set tunaFish.protein := 24.2
+!set tunaFish.proteins := 24.2
 !set tunaFish.fat := 20.5
 !set tunaFish.sat := 5
 !set tunaFish.monounsaturated := 4
@@ -441,7 +407,7 @@
 !set romaineLetucce.name := 'Romaine romaineLetucce'
 !set romaineLetucce.energy := 14
 !set romaineLetucce.carbohydrates := 2.97
-!set romaineLetucce.protein := 0.9
+!set romaineLetucce.proteins := 0.9
 !set romaineLetucce.fat := 0.14
 !set romaineLetucce.sat := 0.03
 !set romaineLetucce.monounsaturated := 0.01
@@ -474,7 +440,7 @@
 !set potato.name := 'Yellow potato'
 !set potato.energy := 91
 !set potato.carbohydrates := 20.9
-!set potato.protein := 1.7
+!set potato.proteins := 1.7
 !set potato.fat := 0.1
 !set potato.sat := 0.03
 !set potato.monounsaturated := 0
@@ -507,7 +473,7 @@
 !set oliveOil.name := 'Olive oil'
 !set oliveOil.energy := 900
 !set oliveOil.carbohydrates := 0
-!set oliveOil.protein := 0
+!set oliveOil.proteins := 0
 !set oliveOil.fat := 100
 !set oliveOil.sat := 13.5
 !set oliveOil.monounsaturated := 72.50
@@ -540,7 +506,7 @@
 !set freshCheese.name := 'Fresh cheese (cow milk)'
 !set freshCheese.energy := 164
 !set freshCheese.carbohydrates := 5
-!set freshCheese.protein := 20.3
+!set freshCheese.proteins := 20.3
 !set freshCheese.fat := 7
 !set freshCheese.sat := 5.4
 !set freshCheese.monounsaturated := 1.40
@@ -573,7 +539,7 @@
 !set avocado.name := 'Avocado'
 !set avocado.energy := 197
 !set avocado.carbohydrates := 5.7
-!set avocado.protein := 1.4
+!set avocado.proteins := 1.4
 !set avocado.fat := 18.7
 !set avocado.sat := 4
 !set avocado.monounsaturated := 10.10
@@ -606,7 +572,7 @@
 !set redOnion.name := 'Red onion'
 !set redOnion.energy := 35
 !set redOnion.carbohydrates := 7.7
-!set redOnion.protein := 0.8
+!set redOnion.proteins := 0.8
 !set redOnion.fat := 0.1
 !set redOnion.sat := 0.02
 !set redOnion.monounsaturated := 0.02
@@ -639,7 +605,7 @@
 !set icebergLetucce.name := 'Iceberg letucce'
 !set icebergLetucce.energy := 25
 !set icebergLetucce.carbohydrates := 4.1
-!set icebergLetucce.protein := 1.4
+!set icebergLetucce.proteins := 1.4
 !set icebergLetucce.fat := 0.3
 !set icebergLetucce.sat := 0.04
 !set icebergLetucce.monounsaturated := 0.01
@@ -672,7 +638,7 @@
 !set limaBeans.name := 'Dry lima beans'
 !set limaBeans.energy := 363
 !set limaBeans.carbohydrates := 63.1
-!set limaBeans.protein := 22.6
+!set limaBeans.proteins := 22.6
 !set limaBeans.fat := 2.2
 !set limaBeans.sat := 0.25
 !set limaBeans.monounsaturated := 0.30
@@ -705,7 +671,7 @@
 !set carrot.name := 'Carrot'
 !set carrot.energy := 41
 !set carrot.carbohydrates := 9.58
-!set carrot.protein := 0.93
+!set carrot.proteins := 0.93
 !set carrot.fat := 0.24
 !set carrot.sat := 0.03
 !set carrot.monounsaturated := 0.01
@@ -738,7 +704,7 @@
 !set garlic.name := 'Garlic'
 !set garlic.energy := 149
 !set garlic.carbohydrates := 33.06
-!set garlic.protein := 6.36
+!set garlic.proteins := 6.36
 !set garlic.fat := 0.5
 !set garlic.sat := 0.09
 !set garlic.monounsaturated := 0.01
@@ -771,7 +737,7 @@
 !set peas.name := 'Peas'
 !set peas.energy := 81
 !set peas.carbohydrates := 14.45
-!set peas.protein := 5.42
+!set peas.proteins := 5.42
 !set peas.fat := 0.4
 !set peas.sat := 0.14
 !set peas.monounsaturated := 0.08
@@ -804,7 +770,7 @@
 !set sourCream.name := 'Sour cream (40% fat)'
 !set sourCream.energy := 344
 !set sourCream.carbohydrates := 0.6
-!set sourCream.protein := 2.1
+!set sourCream.proteins := 2.1
 !set sourCream.fat := 37
 !set sourCream.sat := 23.03
 !set sourCream.monounsaturated := 9.31
@@ -837,7 +803,7 @@
 !set tortilla.name := 'White corn tortilla'
 !set tortilla.energy := 180
 !set tortilla.carbohydrates := 39.60
-!set tortilla.protein := 3.90
+!set tortilla.proteins := 3.90
 !set tortilla.fat := 1.50
 !set tortilla.sat := 0.10
 !set tortilla.monounsaturated := 0.40
@@ -870,7 +836,7 @@
 !set lemon.name := 'Lemon'
 !set lemon.energy := 35
 !set lemon.carbohydrates := 7.7
-!set lemon.protein := 0.8
+!set lemon.proteins := 0.8
 !set lemon.fat := 0.1
 !set lemon.sat := 0.00
 !set lemon.monounsaturated := 0
@@ -903,7 +869,7 @@
 !set brownSugar.name := 'Brown sugar'
 !set brownSugar.energy := 380
 !set brownSugar.carbohydrates := 98.09
-!set brownSugar.protein := 0.12
+!set brownSugar.proteins := 0.12
 !set brownSugar.fat := 0
 !set brownSugar.sat := 0
 !set brownSugar.monounsaturated := 0
@@ -936,7 +902,7 @@
 !set jicama.name := 'Jicama'
 !set jicama.energy := 38
 !set jicama.carbohydrates := 8.82
-!set jicama.protein := 0.72
+!set jicama.proteins := 0.72
 !set jicama.fat := 0.09
 !set jicama.sat := 0.00
 !set jicama.monounsaturated := 0
@@ -969,7 +935,7 @@
 !set pumpkinSeed.name := 'Pumpkin seed'
 !set pumpkinSeed.energy := 522
 !set pumpkinSeed.carbohydrates := 13.43
-!set pumpkinSeed.protein := 32.97
+!set pumpkinSeed.proteins := 32.97
 !set pumpkinSeed.fat := 42.13
 !set pumpkinSeed.sat := 7.69
 !set pumpkinSeed.monounsaturated := 16.33
@@ -1002,7 +968,7 @@
 !set broccoli.name := 'Broccoli'
 !set broccoli.energy := 34
 !set broccoli.carbohydrates := 6.64
-!set broccoli.protein := 2.82
+!set broccoli.proteins := 2.82
 !set broccoli.fat := 0.37
 !set broccoli.sat := 0.05
 !set broccoli.monounsaturated := 0.02
@@ -1035,7 +1001,7 @@
 !set leek.name := 'Leek'
 !set leek.energy := 61
 !set leek.carbohydrates := 14.15
-!set leek.protein := 1.5
+!set leek.proteins := 1.5
 !set leek.fat := 0.3
 !set leek.sat := 0.04
 !set leek.monounsaturated := 0.01
@@ -1068,7 +1034,7 @@
 !set cauliflower.name := 'cauliflower'
 !set cauliflower.energy := 25
 !set cauliflower.carbohydrates := 5.3
-!set cauliflower.protein := 1.98
+!set cauliflower.proteins := 1.98
 !set cauliflower.fat := 0.1
 !set cauliflower.sat := 0.03
 !set cauliflower.monounsaturated := 0.01
@@ -1101,7 +1067,7 @@
 !set lentils.name := 'Lentils'
 !set lentils.energy := 353
 !set lentils.carbohydrates := 60.08
-!set lentils.protein := 25.8
+!set lentils.proteins := 25.8
 !set lentils.fat := 1.06
 !set lentils.sat := 0.13
 !set lentils.monounsaturated := 0.16
@@ -1134,7 +1100,7 @@
 !set pinnaple.name := 'Pinnaple'
 !set pinnaple.energy := 50
 !set pinnaple.carbohydrates := 11.1
-!set pinnaple.protein := 0.54
+!set pinnaple.proteins := 0.54
 !set pinnaple.fat := 0.12
 !set pinnaple.sat := 0.03
 !set pinnaple.monounsaturated := 0.04
@@ -1167,7 +1133,7 @@
 !set blackPepper.name := 'black pepper'
 !set blackPepper.energy := 255
 !set blackPepper.carbohydrates := 64.81
-!set blackPepper.protein := 10.95
+!set blackPepper.proteins := 10.95
 !set blackPepper.fat := 3.26
 !set blackPepper.sat := 1.33
 !set blackPepper.monounsaturated := 1.37
@@ -1200,7 +1166,7 @@
 !set laurel.name := 'Laurel'
 !set laurel.energy := 313
 !set laurel.carbohydrates := 74.91
-!set laurel.protein := 7.61
+!set laurel.proteins := 7.61
 !set laurel.fat := 8.36
 !set laurel.sat := 2.28
 !set laurel.monounsaturated := 1.64
@@ -1233,7 +1199,7 @@
 !set oregano.name := 'oregano'
 !set oregano.energy := 306
 !set oregano.carbohydrates := 64.43
-!set oregano.protein := 11
+!set oregano.proteins := 11
 !set oregano.fat := 10.25
 !set oregano.sat := 2.66
 !set oregano.monounsaturated := 0.67
@@ -1271,7 +1237,7 @@
 !set water.name := 'Natural water'
 !set water.energy := 2
 !set water.carbohydrates := 0
-!set water.protein := 0
+!set water.proteins := 0
 !set water.fat := 0
 !set water.sat := 0
 !set water.monounsaturated := 0
@@ -1304,7 +1270,7 @@
 !set salt.name := 'salt'
 !set salt.energy := 0
 !set salt.carbohydrates := 0
-!set salt.protein := 0
+!set salt.proteins := 0
 !set salt.fat := 0
 !set salt.sat := 0
 !set salt.monounsaturated := 0
@@ -1337,7 +1303,7 @@
 !set vinegar.name := 'Vinegar'
 !set vinegar.energy := 1
 !set vinegar.carbohydrates := 0.3
-!set vinegar.protein := 0
+!set vinegar.proteins := 0
 !set vinegar.fat := 0
 !set vinegar.sat := 0
 !set vinegar.monounsaturated := 0
@@ -1400,9 +1366,9 @@
 
 !create salt1 : RecipeIngredient between (eggsAlaMexican, salt)
 !set salt1.name := 'Pinch of salt'
-!set salt1.amount := 4
+!set salt1.amount := 1
 !set salt1.unit := UnitOfMeasurement::PINCH
-!set salt1.inGrams := 8
+!set salt1.inGrams := 1
 
 !create cornOil1 : RecipeIngredient between (eggsAlaMexican, cornOil)
 !set cornOil1.name := 'Teaspoon of corn oil'
@@ -1420,12 +1386,6 @@
 !set yoghurt1.amount := 1
 !set yoghurt1.unit := UnitOfMeasurement::CUP
 !set yoghurt1.inGrams := 200
-
-!create banana1 : RecipeIngredient between (yoghurtMix, banana)
-!set banana1.name := 'One banana'
-!set banana1.amount := 1
-!set banana1.unit := UnitOfMeasurement::PIECE
-!set banana1.inGrams := 108
 
 !create apricot1 : RecipeIngredient between (yoghurtMix, apricot)
 !set apricot1.name := '4 apricots'
@@ -1450,11 +1410,11 @@
 !set tunaFish1.unit := UnitOfMeasurement::CAN
 !set tunaFish1.inGrams := 50
 
-!create romaineLettuce1 : RecipeIngredient between (tunaSalmagundi, romaineLetucce)
-!set romaineLettuce1.name := 'Cup of chopped romaine letucce'
-!set romaineLettuce1.amount := 1
-!set romaineLettuce1.unit := UnitOfMeasurement::CUP
-!set romaineLettuce1.inGrams := 40
+!create romaineLetucce1 : RecipeIngredient between (tunaSalmagundi, romaineLetucce)
+!set romaineLetucce1.name := 'Cup of chopped romaine letucce'
+!set romaineLetucce1.amount := 1
+!set romaineLetucce1.unit := UnitOfMeasurement::CUP
+!set romaineLetucce1.inGrams := 40
 
 !create potato1 : RecipeIngredient between (tunaSalmagundi, potato)
 !set potato1.name := 'Half a cooked chopped potato'
@@ -1476,9 +1436,9 @@
 
 !create cheese1 : RecipeIngredient between (tunaSalmagundi, freshCheese)
 !set cheese1.name := 'Half a fresh cheese (cow milk)'
-!set cheese1.amount := 0.5
+!set cheese1.amount := 0.25
 !set cheese1.unit := UnitOfMeasurement::PIECE
-!set cheese1.inGrams := 40
+!set cheese1.inGrams := 20
 
 !create avocado1 : RecipeIngredient between (tunaSalmagundi, avocado)
 !set avocado1.name := 'Half a chopped avocado'
@@ -1500,21 +1460,21 @@
 
 !create salt2 : RecipeIngredient between (tunaSalmagundi, salt)
 !set salt2.name := 'Pinch of salt'
-!set salt2.amount := 4
+!set salt2.amount := 1
 !set salt2.unit := UnitOfMeasurement::PINCH
-!set salt2.inGrams := 8
+!set salt2.inGrams := 1
 
 !create pepper1 : RecipeIngredient between (tunaSalmagundi, blackPepper)
 !set pepper1.name := 'Pinch of pepper'
-!set pepper1.amount := 2
+!set pepper1.amount := 1
 !set pepper1.unit := UnitOfMeasurement::PINCH
-!set pepper1.inGrams := 4
+!set pepper1.inGrams := 1
 
 !create laurel1 : RecipeIngredient between (tunaSalmagundi, laurel)
 !set laurel1.name := 'Pinch of laurel'
-!set laurel1.amount := 2
+!set laurel1.amount := 1
 !set laurel1.unit := UnitOfMeasurement::PINCH
-!set laurel1.inGrams := 4
+!set laurel1.inGrams := 1
 
 
 !create saladLimaBeans : Dish
@@ -1522,7 +1482,7 @@
 !set saladLimaBeans.preparation := ''
 
 !create icebergLetucce1 : RecipeIngredient between (saladLimaBeans, icebergLetucce)
-!set icebergLetucce1.name := '2 cups of copped iceberg lettuce'
+!set icebergLetucce1.name := '2 cups of copped iceberg letucce'
 !set icebergLetucce1.amount := 2
 !set icebergLetucce1.unit := UnitOfMeasurement::CUP
 !set icebergLetucce1.inGrams := 80
@@ -1559,9 +1519,9 @@
 
 !create sourCream1 : RecipeIngredient between (saladLimaBeans, sourCream)
 !set sourCream1.name := 'Sour cream (40% fat)'
-!set sourCream1.amount := 2
+!set sourCream1.amount := 1
 !set sourCream1.unit := UnitOfMeasurement::TABLESPOON
-!set sourCream1.inGrams := 20
+!set sourCream1.inGrams := 10
 
 !create vinegar3 : RecipeIngredient between (saladLimaBeans, vinegar)
 !set vinegar3.name := 'Teaspoon of vinegar'
@@ -1571,9 +1531,9 @@
 
 !create salt3 : RecipeIngredient between (saladLimaBeans, salt)
 !set salt3.name := 'Pinch of salt'
-!set salt3.amount := 4
+!set salt3.amount := 1
 !set salt3.unit := UnitOfMeasurement::PINCH
-!set salt3.inGrams := 8
+!set salt3.inGrams := 1
 
 
 !create jicamaSnack : Dish
@@ -1600,9 +1560,9 @@
 
 !create salt4 : RecipeIngredient between (jicamaSnack, salt)
 !set salt4.name := 'Pinch of salt'
-!set salt4.amount := 2
+!set salt4.amount := 1
 !set salt4.unit := UnitOfMeasurement::PINCH
-!set salt4.inGrams := 4
+!set salt4.inGrams := 1
 
 !create broccoliSalad : Dish
 !set broccoliSalad.name := 'Simple salad'
@@ -1628,20 +1588,27 @@
 
 !create oregano1 : RecipeIngredient between (broccoliSalad, oregano)
 !set oregano1.name := 'Pinch of oregano'
-!set oregano1.amount := 2
+!set oregano1.amount := 1
 !set oregano1.unit := UnitOfMeasurement::PINCH
-!set oregano1.inGrams := 4
+!set oregano1.inGrams := 1
 
 !create salt5 : RecipeIngredient between (broccoliSalad, salt)
 !set salt5.name := 'Pinch of salt'
-!set salt5.amount := 3
+!set salt5.amount := 1
 !set salt5.unit := UnitOfMeasurement::PINCH
-!set salt5.inGrams := 6
+!set salt5.inGrams := 1
 
 
 !create lentilSoup : Dish
 !set lentilSoup.name := 'Lentil soup'
 !set lentilSoup.preparation := ''
+
+!create water3 : RecipeIngredient between (lentilSoup, water)
+!set water3.name := 'Water'
+!set water3.amount := 1.5
+!set water3.unit := UnitOfMeasurement::CUP
+!set water3.inGrams := 360
+
 
 !create lentils1 : RecipeIngredient between (lentilSoup, lentils)
 !set lentils1.name := 'Lentils'
@@ -1675,9 +1642,9 @@
 
 !create salt6 : RecipeIngredient between (lentilSoup, salt)
 !set salt6.name := 'Pinch of salt'
-!set salt6.amount := 4
+!set salt6.amount := 1
 !set salt6.unit := UnitOfMeasurement::PINCH
-!set salt6.inGrams := 8
+!set salt6.inGrams := 1
 
 
 -----------------------
@@ -1745,23 +1712,16 @@
 !set ryeBread1.inGrams := 30
 
 !create orangeJuice1 : MealIngredient between (breakfast, orangeJuice)
-!set orangeJuice1.name := 'Cup of orange juice'
+!set orangeJuice1.name := '1 Cup of orange juice'
 !set orangeJuice1.amount := 1
 !set orangeJuice1.unit := UnitOfMeasurement::CUP
 !set orangeJuice1.inGrams := 240
 
 !create mineralWater1 : MealIngredient between (breakfast, mineralWater)
-!set mineralWater1.name := 'Cup of sparkling mineral water'
+!set mineralWater1.name := '1 Cup of sparkling mineral water'
 !set mineralWater1.amount := 1
 !set mineralWater1.unit := UnitOfMeasurement::CUP
 !set mineralWater1.inGrams := 240
-
-!create water3 : MealIngredient between (breakfast, water)
-!set water3.name := 'Cup of water'
-!set water3.amount := 1
-!set water3.unit := UnitOfMeasurement::CUP
-!set water3.inGrams := 240
-
 
 !create morningSnack : Meal
 !set morningSnack.mealTime := MealTime::MORNING_SNACK
@@ -1781,7 +1741,7 @@
 !insert (lunch, lemonade) into MealFoods
 
 !create tortilla1 : MealIngredient between (lunch, tortilla)
-!set tortilla1.name := 'Tortilla'
+!set tortilla1.name := '1 Tortilla'
 !set tortilla1.amount := 1
 !set tortilla1.unit := UnitOfMeasurement::PIECE
 !set tortilla1.inGrams := 30
@@ -1833,5 +1793,5 @@
 !insert (theMenu, eveningSnack) into MenuMeals
 !insert (theMenu, dinner) into MenuMeals
 
-!insert (theMenu, theUser) into MenuUser
+!insert (theUser, theMenu) into UserMenu
 
