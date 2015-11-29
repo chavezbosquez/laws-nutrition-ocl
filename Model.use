@@ -1,12 +1,12 @@
--------------------------------------------------------------------------------
+---------------------------------------------------------
 -- Model of the "Laws of Correct Nutrition" using USE-OCL
--------------------------------------------------------------------------------
+---------------------------------------------------------
 model LawsOfCorrectNutrition  -- lun 23/feb/2015
 
 
--------------------------------------------------------------------------------
+---------------
 -- ENUMERATIONS
--------------------------------------------------------------------------------
+---------------
 enum Gender {
   FEMALE,
   MALE
@@ -74,9 +74,9 @@ enum UnitOfMeasurement {
 }
 
 
--------------------------------------------------------------------------------
+----------
 -- CLASSES
--------------------------------------------------------------------------------
+----------
 class User
 attributes
   name       : String
@@ -127,7 +127,7 @@ class Menu
 operations
   getEnergy()       : Real = self.meals.getEnergy()->sum()
   getCarbohydrates(): Real = self.meals.getCarbohydrates()->sum()
-  getProtein()      : Real = self.meals.getProtein()->sum()
+  getProteins()     : Real = self.meals.getProteins()->sum()
   getFat()          : Real = self.meals.getFat()->sum()
   getSat()          : Real = self.meals.getSat()->sum()
   getMonounsaturated(): Real = self.meals.getMonounsaturated()->sum()
@@ -159,7 +159,7 @@ attributes
 operations
   getEnergy()       : Real = self.foods.getEnergy()->sum() + self.mealIngredient.getEnergy()->sum()
   getCarbohydrates(): Real = self.foods.getCarbohydrates()->sum() + self.mealIngredient.getCarbohydrates()->sum()
-  getProtein()      : Real = self.foods.getProtein()->sum() + self.mealIngredient.getProtein()->sum()
+  getProteins()     : Real = self.foods.getProteins()->sum() + self.mealIngredient.getProteins()->sum()
   getFat()          : Real = self.foods.getFat()->sum() + self.mealIngredient.getFat()->sum()
   getSat()          : Real = self.foods.getSat()->sum() + self.mealIngredient.getSat()->sum()
   getMonounsaturated(): Real = self.foods.getMonounsaturated()->sum() + self.mealIngredient.getMonounsaturated()->sum()
@@ -192,7 +192,7 @@ attributes
 operations
   getEnergy()       : Real = self.recipeIngredient.getEnergy()->sum()
   getCarbohydrates(): Real = self.recipeIngredient.getCarbohydrates()->sum()
-  getProtein()      : Real = self.recipeIngredient.getProtein()->sum()
+  getProteins()     : Real = self.recipeIngredient.getProteins()->sum()
   getFat()          : Real = self.recipeIngredient.getFat()->sum()
   getSat()          : Real = self.recipeIngredient.getSat()->sum()
   getMonounsaturated(): Real = self.recipeIngredient.getMonounsaturated()->sum()
@@ -230,7 +230,7 @@ attributes
   name         : String
   energy       : Real
   carbohydrates: Real
-  protein      : Real
+  proteins     : Real
   fat          : Real
   sat          : Real
   monounsaturated:Real
@@ -270,7 +270,7 @@ attributes
 operations
   getEnergy()       : Real = self.basicFoodstuff.energy  * self.inGrams / 100
   getCarbohydrates(): Real = self.basicFoodstuff.carbohydrates * self.inGrams / 100
-  getProtein()      : Real = self.basicFoodstuff.protein * self.inGrams / 100
+  getProteins()     : Real = self.basicFoodstuff.proteins * self.inGrams / 100
   getFat()          : Real = self.basicFoodstuff.fat  * self.inGrams / 100
   getSat()          : Real = self.basicFoodstuff.sat  * self.inGrams / 100
   getMonounsaturated(): Real = self.basicFoodstuff.monounsaturated  * self.inGrams / 100
@@ -304,7 +304,7 @@ between
 operations
   getEnergy()       : Real = self.basicFoodstuff.energy  * self.inGrams / 100
   getCarbohydrates(): Real = self.basicFoodstuff.carbohydrates * self.inGrams / 100
-  getProtein()      : Real = self.basicFoodstuff.protein * self.inGrams / 100
+  getProteins()     : Real = self.basicFoodstuff.proteins * self.inGrams / 100
   getFat()          : Real = self.basicFoodstuff.fat  * self.inGrams / 100
   getSat()          : Real = self.basicFoodstuff.sat  * self.inGrams / 100
   getMonounsaturated(): Real = self.basicFoodstuff.monounsaturated  * self.inGrams / 100
@@ -332,9 +332,10 @@ operations
 end
 
 
--------------------------------------------------------------------------------
+---------------
 -- ASSOCIATIONS
--------------------------------------------------------------------------------
+---------------
+
 aggregation UserFavorites between
   User[*] role user
   BasicFoodstuff100gr[*] role favorites
@@ -355,15 +356,16 @@ composition MenuMeals between
   Meal[1..*] role meals
 end
 
-composition MenuUser between
-  Menu[*]
+composition UserMenu between
   User[1]
+  Menu[*]
 end
 
 
--------------------------------------------------------------------------------
+--------------
 -- CONSTRAINTS
--------------------------------------------------------------------------------
+--------------
+
 constraints
 
 context User
@@ -376,7 +378,7 @@ context Menu
                      self.getEnergy() <= (self.user.getTEE() * 1.10)
 
 context Menu
-  inv LawOfQuality_HealthyPlate: (self.meals.foods.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::FRUITS) or
+  inv LawOfQuality: (self.meals.foods.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::FRUITS) or
                    self.meals.mealIngredient.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::FRUITS))
                    and
                    (self.meals.foods.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::VEGETABLES) or
@@ -394,7 +396,15 @@ context Menu
                    (self.meals.foods.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::WATER) or
                    self.meals.mealIngredient.basicFoodstuff.plateGroup->includes(HealthyPlateGroup::WATER))
 
-  inv LawOfQuality_Vitamins: if (self.user.gender = Gender::FEMALE) then
+context Menu
+  inv LawOfHarmony_Macronutrients: (let carb = self.getCarbohydrates()*4 in
+                              (carb >= self.getEnergy()*0.50) and (carb <= self.getEnergy()*0.70)) and
+                    (let prot = getProteins()*4 in
+                              (prot >= self.getEnergy()*0.10) and (prot <= self.getEnergy()*0.20)) and
+                    (let fat = self.getFat()*9 in
+                              (fat >= self.getEnergy()*0.20) and (fat <= self.getEnergy()*0.35))
+
+  inv LawOfHarmony_Vitamins: if (self.user.gender = Gender::FEMALE) then
                      self.getVitA() >= 700 and self.getVitB1() >= 1.1 and
                      self.getVitB2() >= 1.1 and self.getVitB3() >= 14 and
                      self.getVitB6() >= 1.3 and self.getVitB9() >= 400 and
@@ -406,38 +416,30 @@ context Menu
                      self.getVitB12() >= 2.4 and self.getVitC() >= 90
                    endif
   
-  inv LawOfQuality_Minerals: if (self.user.gender = Gender::FEMALE) then
+  inv LawOfHarmony_Minerals: if (self.user.gender = Gender::FEMALE) then
                      self.getCalcium() >= 1000 and self.getPhosphorus() >= 700 and 
-                     self.getSodium() >= 2400 and self.getPotassium() >= 4700 and
+                     self.getSodium() >= 500 and self.getPotassium() >= 2000 and
                      self.getIron() >= 18 and self.getMagnesium() >= 315 and 
                      self.getZinc() >= 8
                    else
                      self.getCalcium() >= 1000 and self.getPhosphorus() >= 700 and 
-                     self.getSodium() >= 2400 and self.getPotassium() >= 4700 and
+                     self.getSodium() >= 500 and self.getPotassium() >= 2000 and
                      self.getIron() >= 8  and self.getMagnesium() >= 410 and 
                      self.getZinc() >= 11
                    endif
 
-  inv LawOfQuality_Sat: self.getSat() <=  self.getEnergy() * 0.07
+  inv LawOfHarmony_Sat: (self.getSat()  * 9) <= (self.getEnergy() * 0.07)
 
-  inv LawOfQuality_Fiber: getFiber() >=  20
+  inv LawOfHarmony_Fiber: self.getFiber() >=  20
 
-  inv LawOfQuality_Water: if (self.user.gender = Gender::FEMALE) then
+  inv LawOfHarmony_Water: if (self.user.gender = Gender::FEMALE) then
                      self.getWater() >= 2700
                    else
                      self.getWater() >= 3700
                    endif
 
 context Menu
-  inv LawOfHarmony: (let carb = self.getCarbohydrates()*4 in
-                              (carb >= self.getEnergy()*0.50) and (carb <= self.getEnergy()*0.70)) and
-                    (let prot = getProtein()*4 in
-                              (prot >= self.getEnergy()*0.10) and (prot <= self.getEnergy()*0.20)) and
-                    (let fat = self.getFat()*9 in
-                              (fat >= self.getEnergy()*0.20) and (fat <= self.getEnergy()*0.35))
-
-context Menu
-  inv LawOfAdecuacy: (self.meals.foods.basicFoodstuff->intersection(self.user.intolerants)->isEmpty() or
+  inv LawOfAdequacy: (self.meals.foods.basicFoodstuff->intersection(self.user.intolerants)->isEmpty() or
                       self.meals.mealIngredient.basicFoodstuff->intersection(self.user.intolerants)->isEmpty())
                      and
                      (self.meals.foods.basicFoodstuff->intersection(self.user.favorites)->notEmpty() or
